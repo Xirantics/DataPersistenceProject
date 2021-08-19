@@ -21,7 +21,8 @@ public class MainManager : MonoBehaviour
 
     private void Start()
     {
-        BestScoreText.text = "Best Score: " + ScoreManager.bestScore + " Name: " + PlayerNameManager.playerName;
+        ScoreText.text = "Score: " + m_Points + " Name: " + PlayerNameManager.playerName;
+        BestScoreText.text = "Best Scores:\n" + "Name: " + ScoreManager.bestPlayerName[0] + " Score: " + ScoreManager.bestScore[0] + "\n" + "Name: " + ScoreManager.bestPlayerName[1] + " Score: " + ScoreManager.bestScore[1] + "\n" + "Name: " + ScoreManager.bestPlayerName[2] + " Score: " + ScoreManager.bestScore[2] + "\n";
 
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
@@ -68,17 +69,34 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        ScoreText.text = "Score: " + m_Points + " Name: " + PlayerNameManager.playerName;
+    }
+
+    private void BestScoreList()
+    {
+        for (int i = 0; i < ScoreManager.bestScore.Length; i++)
+        {
+            if (m_Points > ScoreManager.bestScore[i])
+            {
+                for (int j = ScoreManager.bestScore.Length - 1; j > i; j--)
+                {
+                    ScoreManager.bestScore[j] = ScoreManager.bestScore[j - 1];
+                    ScoreManager.bestPlayerName[j] = ScoreManager.bestPlayerName[j - 1];
+                }
+
+                ScoreManager.bestScore[i] = m_Points;
+                ScoreManager.bestPlayerName[i] = PlayerNameManager.playerName;
+
+                return;
+            }
+        }
     }
 
     public void GameOver()
     {
-        if (m_Points > ScoreManager.bestScore)
-        {
-            ScoreManager.bestScore = m_Points;
-        }
+        BestScoreList();
 
-        BestScoreText.text = "Best Score: " + ScoreManager.bestScore + " Name: " + PlayerNameManager.playerName;
+        BestScoreText.text = "Best Scores:\n" + "Name: " + ScoreManager.bestPlayerName[0] + " Score: " + ScoreManager.bestScore[0] + "\n" + "Name: " + ScoreManager.bestPlayerName[1] + " Score: " + ScoreManager.bestScore[1] + "\n" + "Name: " + ScoreManager.bestPlayerName[2] + " Score: " + ScoreManager.bestScore[2] + "\n";
 
         GameOverText.SetActive(true);
         m_GameOver = true;
