@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class PlayerNameManager : MonoBehaviour
 {
-    public Text playerNameInput;
-
     public static string playerName;
 
     public static PlayerNameManager playerNameManager;
@@ -22,12 +20,5 @@ public class PlayerNameManager : MonoBehaviour
 
         playerNameManager = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    public void StartGame()
-    {
-        playerName = playerNameInput.text;
-
-        SceneManager.LoadScene(1);
     }
 }

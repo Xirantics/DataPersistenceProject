@@ -569,7 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c226aa90142c6c945a3c73a825e1966a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNameInput: {fileID: 1285645297}
 --- !u!4 &910685144
 Transform:
   m_ObjectHideFlags: 0
@@ -834,6 +833,7 @@ GameObject:
   - component: {fileID: 1337807053}
   - component: {fileID: 1337807052}
   - component: {fileID: 1337807051}
+  - component: {fileID: 1337807054}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -905,8 +905,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 910685143}
-        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+      - m_Target: {fileID: 1337807054}
+        m_TargetAssemblyTypeName: Play, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -955,6 +955,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337807049}
   m_CullTransparentMesh: 1
+--- !u!114 &1337807054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337807049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff9423754aace545bdd1de4a1b22083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameInput: {fileID: 1285645297}
 --- !u!1 &1944586494
 GameObject:
   m_ObjectHideFlags: 0

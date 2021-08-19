@@ -101,4 +101,9 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
         m_GameOver = true;
     }
+
+    public void ChangePlayerName()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
