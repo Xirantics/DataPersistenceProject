@@ -29,26 +29,18 @@ public class ScoreManager : MonoBehaviour
     [System.Serializable]
     class SaveData
     {
-        public int bestScoreOne;
-        public int bestScoreTwo;
-        public int bestScoreThree;
+        public int[] bestScore;
 
-        public string bestPlayerNameOne;
-        public string bestPlayerNameTwo;
-        public string bestPlayerNameThree;
+        public string[] bestPlayerName;
     }
 
     public static void SaveScores()
     {
         SaveData data = new SaveData();
 
-        data.bestScoreOne = bestScore[0];
-        data.bestScoreTwo = bestScore[1];
-        data.bestScoreThree = bestScore[2];
+        data.bestScore = bestScore;
 
-        data.bestPlayerNameOne = bestPlayerName[0];
-        data.bestPlayerNameTwo = bestPlayerName[1];
-        data.bestPlayerNameThree = bestPlayerName[2];
+        data.bestPlayerName = bestPlayerName;
 
         string json = JsonUtility.ToJson(data);
 
@@ -65,13 +57,9 @@ public class ScoreManager : MonoBehaviour
 
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            bestScore[0] = data.bestScoreOne;
-            bestScore[1] = data.bestScoreTwo;
-            bestScore[2] = data.bestScoreThree;
+            bestScore = data.bestScore;
 
-            bestPlayerName[0] = data.bestPlayerNameOne;
-            bestPlayerName[1] = data.bestPlayerNameTwo;
-            bestPlayerName[2] = data.bestPlayerNameThree;
+            bestPlayerName = data.bestPlayerName;
         }
 
         else
